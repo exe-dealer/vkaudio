@@ -16,8 +16,9 @@
       function onAudioGetComplete(res) {
         var audios = res.response;
         document.body.insertAdjacentHTML('beforeend', audios.map(function (audio) {
-          return '<a href="' + audio.url + '" download="' + audio.artist + ' &mdash; '
-            + audio.title + '">' + audio.artist + ' &mdash; '
+          return '<a href="' + audio.url.replace(/^http:/, 'https')
+            + '" download="' + audio.artist + ' &mdash; '
+            + audio.title + '.mp3">' + audio.artist + ' &mdash; '
             + audio.title + '</a><br>';
         }).join(''));
       }
@@ -36,7 +37,7 @@
       }
       document.addEventListener('click', function (evt) {
         if (evt.target.matches('a[download]')) {
-          download(evt.target.href, evt.target.textContent + '.mp3');
+          download(evt.target.href, evt.target.download);
           evt.preventDefault();
         }
       }, true);

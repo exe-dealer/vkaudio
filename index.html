@@ -16,7 +16,7 @@
       function onAudioGetComplete(res) {
         var audios = res.response.slice(1);
         document.body.insertAdjacentHTML('beforeend', audios.map(function (audio) {
-          return '<a href="' + audio.url.replace(/^http:/, 'https')
+          return '<a href="' + audio.url.replace(/^http:/, 'https:')
             + '" download="' + audio.artist + ' &mdash; '
             + audio.title + '.mp3">' + audio.artist + ' &mdash; '
             + audio.title + '</a><br>';

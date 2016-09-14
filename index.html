@@ -14,7 +14,7 @@
         VK.Api.call('audio.get', { owner_id: res.session.mid, need_user: 0 }, onAudioGetComplete);
       }
       function onAudioGetComplete(res) {
-        var audios = res.response;
+        var audios = res.response.slice(1);
         document.body.insertAdjacentHTML('beforeend', audios.map(function (audio) {
           return '<a href="' + audio.url.replace(/^http:/, 'https')
             + '" download="' + audio.artist + ' &mdash; '
